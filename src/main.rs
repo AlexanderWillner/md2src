@@ -1,8 +1,10 @@
+// Copyright by Alexander Willner. See the LICENCE file for the license information.
+
 use pulldown_cmark::{Parser, Options, Event, Tag, CodeBlockKind, CowStr};
 use std::fs;
 
 fn main() {
-    let markdown_input = fs::read_to_string("README.md").expect("File not found. Todo: make a CLI.");
+    let markdown_input = fs::read_to_string("README.md").expect("File 'README.md' not found.");
     let parser = Parser::new_ext(&markdown_input, Options::empty());
     let mut active: bool = false;
     let mut i = 0;

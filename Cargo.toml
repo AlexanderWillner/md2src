@@ -1,10 +1,12 @@
 [package]
-name = "b"
-version = "0.1.0"
+name = "md2src"
+description = "Markdown to source. Extracts code blocks marked with triple backticks into files."
+version = "0.0.1"
 authors = ["Alexander Willner <alex@willner.ws>"]
 edition = "2018"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+license = "MIT OR Apache-2.0"
+homepage = "https://github.com/AlexanderWillner/md2src"
+repository = "https://github.com/AlexanderWillner/md2src"
 
 [dependencies]
 pulldown-cmark = { version = "0.7", default-features = false, features = ["simd"] }
