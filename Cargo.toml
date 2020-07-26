@@ -8,6 +8,8 @@ license = "Apache-2.0"
 license-file = "LICENSE"
 homepage = "https://github.com/AlexanderWillner/md2src"
 repository = "https://github.com/AlexanderWillner/md2src"
+keywords = ["markdown"]
+categories = ["command-line-utilities"]
 
 [dependencies]
 pulldown-cmark = { version = "0.7", default-features = false, features = ["simd"] }
