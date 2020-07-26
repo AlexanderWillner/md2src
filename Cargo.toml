@@ -5,9 +5,10 @@ version = "0.0.1"
 authors = ["Alexander Willner <alex@willner.ws>"]
 edition = "2018"
 license = "Apache-2.0"
-license-file = "LICENSE"
 homepage = "https://github.com/AlexanderWillner/md2src"
 repository = "https://github.com/AlexanderWillner/md2src"
+documentation = "https://github.com/AlexanderWillner/md2src"
+readme = "README.md"
 keywords = ["markdown"]
 categories = ["command-line-utilities"]
 

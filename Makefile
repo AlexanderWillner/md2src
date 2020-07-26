@@ -9,7 +9,7 @@
 TARGET=target/debug/
 TARGET_HTML=html
 
-.PHONY: help license copyright
+.PHONY: help license copyright test
 
 help: ## Print help for each target
 	$(info Rust Makefile)
