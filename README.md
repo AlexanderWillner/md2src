@@ -16,5 +16,5 @@ Run run ```md2src``` (or ```cargo run```) to create the source files named ```co
 
 Please note, that the current version is just a a proof of concept / minimal valuable product state. Things planned:
 
-- Implement CLI
+- Implement CLI: input name, output name, languages, ignore string, ...
 - Vector of tuple with language / extension combinations
