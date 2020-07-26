@@ -10,11 +10,36 @@ To download the latest release, please run ```cargo install md2src```.
 
 ## Example
 
-Run run ```md2src``` (or ```cargo run```) to create the source files named ```codeXXX.ext```.
+Run run ```md2src``` to create the source file named ```code_snippet_000.rs``` from this code:
 
-## Todo
+```rust
+fn main() {
+    todo!();
+}
+```
 
-Please note, that the current version is just a a proof of concept / minimal valuable product state. Things planned:
+## Help
 
-- Implement CLI: input name, output name, languages, ignore string, ...
-- Vector of tuple with language / extension combinations
+```bash
+$ md2src --help
+md2src 1.0.0
+Alexander Willner <alex@willner.ws>
+Markdown to source. Extracts code blocks marked with triple backticks into files.
+
+USAGE:
+    md2src [OPTIONS] [ARGS]
+
+FLAGS:
+    -h, --help       Prints help information
+    -V, --version    Prints version information
+
+OPTIONS:
+    -e, --extension <extension>    File extension for code files [default: rs]
+    -l, --language <language>      Code snippet language to extract [default: rust]
+    -p, --prefix <prefix>          Prefix code files with this string [default: code_snippet_]
+    -i, --ignore <string>          Ignore code with this string [default: #[doc = "This will fail]
+
+ARGS:
+    <filename>    Markdown file that contains the code snippets [default: README.md]
+    <folder>      Folder for the code snippets [default: .]
+```

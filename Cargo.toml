@@ -1,7 +1,7 @@
 [package]
 name = "md2src"
 description = "Markdown to source. Extracts code blocks marked with triple backticks into files."
-version = "0.0.1"
+version = "1.0.0"
 authors = ["Alexander Willner <alex@willner.ws>"]
 edition = "2018"
 license = "Apache-2.0"
@@ -14,4 +14,6 @@ categories = ["command-line-utilities"]
 
 [dependencies]
 pulldown-cmark = { version = "0.7", default-features = false, features = ["simd"] }
-# clap = "3.0.0-beta.1"
+structopt = "0.3.13"
+failure = "0.1.7"
+exitfailure = "0.5.1"
