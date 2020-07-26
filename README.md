@@ -10,11 +10,11 @@ To download the latest release, please run ```cargo install md2src```.
 
 ## Example
 
-Run run ```md2src``` (or ```cargo run```) to create the source files.
+Run run ```md2src``` (or ```cargo run```) to create the source files named ```codeXXX.ext```.
 
 ## Todo
 
 Please note, that the current version is just a a proof of concept / minimal valuable product state. Things planned:
 
 - Implement CLI
-- Vector of tuple with language / extension combination
+- Vector of tuple with language / extension combinations
