@@ -64,7 +64,7 @@ style: ## Run style code
 	@cargo fmt
 
 doc: ## Generate documentation
-	@cargo doc --no-deps
+	@cargo doc --no-deps --open
 
 copyright: ## Add copyright information to each file
 	@find . -iname "*.rs" -exec bash -c "if ! grep -q Copyright "{}"; then cat COPYRIGHT {} > {}.new && mv {}.new {} ; fi" \;
@@ -72,8 +72,12 @@ copyright: ## Add copyright information to each file
 feedback: ## Provide feedback
 	@open https://github.com/alexanderwillner/md2src/issues
 
+install: ## Install the binary
+	@cargo install --path .
+
 release:
 	@cargo build --release
+	@cargo publish
 	@cd target/release && tar -czf md2src-$(VERSION)-mac.tar.gz md2src
 	@shasum -a 256 md2src-$(VERSION)-mac.tar.gz
 	@open .
