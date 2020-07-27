@@ -2,11 +2,11 @@
 
 Simple rust binary to extract code blocks marked with triple backticks from markdown files into source files.
 
-[![Build Status](https://github.com/alexanderwillner/md2src/workflows/Build-Test/badge.svg)](https://github.com/AlexanderWillner/md2src/actions) [![Coverage Status](https://coveralls.io/repos/github/AlexanderWillner/md2src/badge.svg?branch=master)](https://coveralls.io/github/AlexanderWillner/md2src?branch=master) [![Crates.io](https://img.shields.io/crates/d/md2src)](https://crates.io/crates/md2src)
+[![Build Status](https://github.com/alexanderwillner/md2src/workflows/Build-Test/badge.svg)](https://github.com/AlexanderWillner/md2src/actions) [![Coverage Status](https://coveralls.io/repos/github/AlexanderWillner/md2src/badge.svg?branch=master)](https://coveralls.io/github/AlexanderWillner/md2src?branch=master) [![Crates.io](https://img.shields.io/crates/d/md2src?label=crate%20downloads)](https://crates.io/crates/md2src) [![download](https://img.shields.io/github/downloads/AlexanderWillner/md2src/total?label=binary%20downloads)](https://github.com/AlexanderWillner/md2src/releases)
 
 ## Installation
 
-To download the latest release, please run ```cargo install md2src```.
+To download the latest release, please run either ```cargo install md2src``` or ```brew install AlexanderWillner/tap/md2src```.
 
 ## Example
 

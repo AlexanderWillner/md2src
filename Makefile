@@ -8,6 +8,7 @@
 # Config
 TARGET=target/debug/
 TARGET_HTML=html
+VERSION=1.0.0
 
 .PHONY: help license copyright test
 
@@ -40,7 +41,7 @@ coverage: ## Run code coverage generation
 	@type grcov >/dev/null 2>&1 || (echo "Run 'cargo install grcov' first." >&2 ; exit 1)
 	@CARGO_INCREMENTAL=0 RUSTFLAGS="-Zprofile -Ccodegen-units=1 -Copt-level=0 -Clink-dead-code -Coverflow-checks=off -Zpanic_abort_tests -Cpanic=abort" cargo build
 	@CARGO_INCREMENTAL=0 RUSTFLAGS="-Zprofile -Ccodegen-units=1 -Copt-level=0 -Clink-dead-code -Coverflow-checks=off -Zpanic_abort_tests -Cpanic=abort" cargo test
-	@grcov $(TARGET) -t $(TARGET_HTML)
+	@grcov $(TARGET) -t $(TARGET_HTML) --ignore ".."
 	@echo "Result saved to the '$(TARGET_HTML)' folder"
 
 test: ## Run dynamic tests
@@ -67,3 +68,15 @@ doc: ## Generate documentation
 
 copyright: ## Add copyright information to each file
 	@find . -iname "*.rs" -exec bash -c "if ! grep -q Copyright "{}"; then cat COPYRIGHT {} > {}.new && mv {}.new {} ; fi" \;
+
+feedback: ## Provide feedback
+	@open https://github.com/alexanderwillner/md2src/issues
+
+release:
+	@cargo build --release
+	@cd target/release && tar -czf md2src-$(VERSION)-mac.tar.gz md2src
+	@shasum -a 256 md2src-$(VERSION)-mac.tar.gz
+	@open .
+	@open ../homebrew-tap
+	@hub release create -a target/release/md2src-$(VERSION)-mac.tar.gz -m '$(VERSION)' v$(VERSION)
+	@open https://github.com/AlexanderWillner/md2src/releases/
