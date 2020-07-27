@@ -10,7 +10,7 @@ To download the latest release, please run either ```cargo install md2src``` or 
 
 ## Example
 
-Run run ```md2src``` to create the source file named ```code_snippet_000.rs``` from this code:
+Run run ```md2src README.md``` to create the source file named ```code_snippet_000.rs``` from the following code:
 
 ```rust
 fn main() {
@@ -22,12 +22,12 @@ fn main() {
 
 ```bash
 $ md2src --help
-md2src 1.0.0
+md2src 1.0.1
 Alexander Willner <alex@willner.ws>
 Markdown to source. Extracts code blocks marked with triple backticks into files.
 
 USAGE:
-    md2src [OPTIONS] [ARGS]
+    md2src [OPTIONS] <filename> [folder]
 
 FLAGS:
     -h, --help       Prints help information
@@ -40,6 +40,6 @@ OPTIONS:
     -i, --ignore <string>          Ignore code with this string [default: #[doc = "This will fail]
 
 ARGS:
-    <filename>    Markdown file that contains the code snippets [default: README.md]
+    <filename>    Markdown file that contains the code snippets
     <folder>      Folder for the code snippets [default: .]
 ```

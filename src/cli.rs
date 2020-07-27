@@ -7,8 +7,7 @@ use structopt::StructOpt;
 pub struct Options {
     #[structopt(
         name = "filename",
-        help = "Markdown file that contains the code snippets",
-        default_value = "README.md"
+        help = "Markdown file that contains the code snippets"
     )]
     pub file: String,
     #[structopt(

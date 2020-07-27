@@ -8,7 +8,7 @@
 # Config
 TARGET=target/debug/
 TARGET_HTML=html
-VERSION=1.0.0
+VERSION=1.0.1
 
 .PHONY: help license copyright test
 
@@ -41,7 +41,7 @@ coverage: ## Run code coverage generation
 	@type grcov >/dev/null 2>&1 || (echo "Run 'cargo install grcov' first." >&2 ; exit 1)
 	@CARGO_INCREMENTAL=0 RUSTFLAGS="-Zprofile -Ccodegen-units=1 -Copt-level=0 -Clink-dead-code -Coverflow-checks=off -Zpanic_abort_tests -Cpanic=abort" cargo build
 	@CARGO_INCREMENTAL=0 RUSTFLAGS="-Zprofile -Ccodegen-units=1 -Copt-level=0 -Clink-dead-code -Coverflow-checks=off -Zpanic_abort_tests -Cpanic=abort" cargo test
-	@grcov $(TARGET) -t $(TARGET_HTML) --ignore ".."
+	@grcov $(TARGET) -t $(TARGET_HTML) --ignore "/*"
 	@echo "Result saved to the '$(TARGET_HTML)' folder"
 
 test: ## Run dynamic tests
