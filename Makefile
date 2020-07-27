@@ -64,7 +64,7 @@ style: ## Run style code
 	@cargo fmt
 
 doc: ## Generate documentation
-	@cargo doc --target-dir docs
+	@cargo doc --no-deps
 
 copyright: ## Add copyright information to each file
 	@find . -iname "*.rs" -exec bash -c "if ! grep -q Copyright "{}"; then cat COPYRIGHT {} > {}.new && mv {}.new {} ; fi" \;
