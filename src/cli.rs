@@ -21,7 +21,7 @@ pub struct Options {
         short = "i",
         long = "ignore",
         help = "Ignore code with this string",
-        default_value = "#[doc = \"This will fail",
+        default_value = "// (note: this does not compile)",
         required = false
     )]
     pub ignore: String,

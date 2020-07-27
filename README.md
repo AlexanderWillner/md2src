@@ -37,7 +37,7 @@ OPTIONS:
     -e, --extension <extension>    File extension for code files [default: rs]
     -l, --language <language>      Code snippet language to extract [default: rust]
     -p, --prefix <prefix>          Prefix code files with this string [default: code_snippet_]
-    -i, --ignore <string>          Ignore code with this string [default: #[doc = "This will fail]
+    -i, --ignore <string>          Ignore code with this string [default: // (note: this does not compile)]
 
 ARGS:
     <filename>    Markdown file that contains the code snippets
