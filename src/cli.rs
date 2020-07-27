@@ -11,7 +11,11 @@ pub struct Options {
         default_value = "README.md"
     )]
     pub file: String,
-    #[structopt(name = "folder", help = "Folder for the code snippets", default_value = ".")]
+    #[structopt(
+        name = "folder",
+        help = "Folder for the code snippets",
+        default_value = "."
+    )]
     pub folder: String,
     #[structopt(
         name = "string",
