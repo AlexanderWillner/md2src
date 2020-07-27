@@ -3,7 +3,7 @@
 mod cli;
 
 use exitfailure::ExitFailure;
-use md2src::{get_snippets, write_snippets};
+use md2src::MD2Src;
 use structopt::StructOpt;
 
 fn cli_entry<T>(args: T) -> Result<(), ExitFailure>
@@ -11,8 +11,9 @@ where
     T: Iterator<Item = String>,
 {
     let args = cli::Options::from_iter(args);
-    let snippets = get_snippets(args.file, args.lang, args.ignore)?;
-    write_snippets(snippets, args.folder, args.prefix, args.ext)
+    let md2src = MD2Src {};
+    let snippets = md2src.get_snippets(args.file, args.lang, args.ignore)?;
+    md2src.write_snippets(snippets, args.folder, args.prefix, args.ext)
 }
 
 fn main() -> Result<(), ExitFailure> {
