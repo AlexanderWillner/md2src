@@ -75,11 +75,11 @@ feedback: ## Provide feedback
 install: ## Install the binary
 	@cargo install --path .
 
-release:
+release: test
 	@cargo build --release
 	@cargo publish
 	@cd target/release && tar -czf md2src-$(VERSION)-mac.tar.gz md2src
-	@shasum -a 256 md2src-$(VERSION)-mac.tar.gz
+	@shasum -a 256 target/release/md2src-$(VERSION)-mac.tar.gz
 	@open .
 	@open ../homebrew-tap
 	@hub release create -a target/release/md2src-$(VERSION)-mac.tar.gz -m '$(VERSION)' v$(VERSION)
