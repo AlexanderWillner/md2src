@@ -1,7 +1,7 @@
 [package]
 name = "md2src"
 description = "Markdown to source. Extracts code blocks marked with triple backticks into files."
-version = "1.0.1"
+version = "1.0.2"
 authors = ["Alexander Willner <alex@willner.ws>"]
 edition = "2018"
 license = "Apache-2.0"

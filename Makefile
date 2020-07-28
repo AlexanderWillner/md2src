@@ -8,7 +8,7 @@
 # Config
 TARGET=target/debug/
 TARGET_HTML=html
-VERSION=1.0.1
+VERSION=1.0.2
 
 .PHONY: help license copyright test
 

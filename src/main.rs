@@ -12,7 +12,7 @@ where
 {
     let args = cli::Options::from_iter(args);
     let md2src = MD2Src {};
-    let snippets = md2src.get_snippets(args.file, args.lang, args.ignore)?;
+    let snippets = md2src.get_snippets_from_file(args.file, args.lang, args.ignore)?;
     md2src.write_snippets(snippets, args.folder, args.prefix, args.ext)
 }
 

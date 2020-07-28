@@ -27,18 +27,17 @@ impl MD2Src {
     ///
     /// # Arguments
     ///
-    /// * `file`   - The markdown filename.
-    /// * `lang`   - The language of the code snippets defined after three backticks
-    /// * `ignore` - Ignore those code snippets that include this string
+    /// * `markdown` - The markdown string
+    /// * `lang`     - The language of the code snippets defined after three backticks
+    /// * `ignore`   - Ignore those code snippets that include this string
     ///
-    pub fn get_snippets(
+    pub fn get_snippets_from_string(
         self: &Self,
-        file: String,
+        markdown: String,
         lang: String,
         ignore: String,
     ) -> Result<Vec<String>, ExitFailure> {
-        let markdown_input = fs::read_to_string(&file)?;
-        let parser = Parser::new_ext(&markdown_input, Options::empty());
+        let parser = Parser::new_ext(&markdown, Options::empty());
         let mut active = false;
         let mut result: Vec<String> = vec![];
 
@@ -60,6 +59,23 @@ impl MD2Src {
         }
 
         Ok(result)
+    }
+
+    /// Returns a vector of extracted code snippets.
+    ///
+    /// # Arguments
+    ///
+    /// * `file`   - The markdown filename
+    /// * `lang`   - The language of the code snippets defined after three backticks
+    /// * `ignore` - Ignore those code snippets that include this string
+    ///
+    pub fn get_snippets_from_file(
+        self: &Self,
+        file: String,
+        lang: String,
+        ignore: String,
+    ) -> Result<Vec<String>, ExitFailure> {
+        self.get_snippets_from_string(fs::read_to_string(&file)?, lang, ignore)
     }
 
     /// Writes a vector of extracted code snippets (each snippet one file: `folder/prefix000.ext`).
