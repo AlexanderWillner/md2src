@@ -42,11 +42,14 @@ impl MD2Src {
         let mut result: Vec<String> = vec![];
 
         for element in parser {
-            if let Event::Start(Tag::CodeBlock(CodeBlockKind::Fenced(CowStr::Borrowed(language)))) = element {
+            if let Event::Start(Tag::CodeBlock(CodeBlockKind::Fenced(CowStr::Borrowed(language)))) =
+                element
+            {
                 active = language == lang
             }
-            if let Event::End(Tag::CodeBlock(CodeBlockKind::Fenced(CowStr::Borrowed(_)))) = element {
-                    active = false;
+            if let Event::End(Tag::CodeBlock(CodeBlockKind::Fenced(CowStr::Borrowed(_)))) = element
+            {
+                active = false;
             }
             if let Event::Text(code) = element {
                 if active && !code.contains(&ignore) {
