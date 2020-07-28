@@ -20,7 +20,7 @@ use std::fs;
 use std::path::Path;
 
 /// Markdown to source code
-pub struct MD2Src {}
+pub struct MD2Src;
 
 impl MD2Src {
     /// Returns a vector of extracted code snippets.
@@ -42,19 +42,16 @@ impl MD2Src {
         let mut result: Vec<String> = vec![];
 
         for element in parser {
-            match element {
-                Event::Start(Tag::CodeBlock(CodeBlockKind::Fenced(CowStr::Borrowed(language)))) => {
-                    active = language == lang
-                }
-                Event::End(Tag::CodeBlock(CodeBlockKind::Fenced(CowStr::Borrowed(_)))) => {
+            if let Event::Start(Tag::CodeBlock(CodeBlockKind::Fenced(CowStr::Borrowed(language)))) = element {
+                active = language == lang
+            }
+            if let Event::End(Tag::CodeBlock(CodeBlockKind::Fenced(CowStr::Borrowed(_)))) = element {
                     active = false;
+            }
+            if let Event::Text(code) = element {
+                if active && !code.contains(&ignore) {
+                    result.push(code.to_string());
                 }
-                Event::Text(code) => {
-                    if active && !code.contains(&ignore) {
-                        result.push(code.to_string());
-                    }
-                }
-                _ => (),
             }
         }
 
