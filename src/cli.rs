@@ -22,9 +22,10 @@ pub struct Options {
         long = "ignore",
         help = "Ignore code with this string",
         default_value = "// (note: this does not compile)",
+        multiple = true,
         required = false
     )]
-    pub ignore: String,
+    pub ignore: Vec<String>,
     #[structopt(
         name = "prefix",
         short = "p",
