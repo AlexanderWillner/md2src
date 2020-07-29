@@ -8,15 +8,13 @@
 # Config
 TARGET=target/debug/
 TARGET_HTML=html
-VERSION=1.0.2
+NAME=$(shell grep -E "^name" Cargo.toml|head -n1|awk -F'"' '$$0=$$2')
+VERSION=$(shell grep -E "^version" Cargo.toml|head -n1|awk -F'"' '$$0=$$2')
 
 .PHONY: help license copyright test
 
 help: ## Print help for each target
-	$(info Rust Makefile)
-	$(info =============)
-	$(info )
-	$(info Consider to use 'cargo' instead.)
+	$(info $(NAME) Makefile (v$(VERSION)))
 	$(info )
 	$(info Available commands:)
 	$(info )
@@ -39,9 +37,10 @@ check-setup:
 
 coverage: ## Run code coverage generation
 	@type grcov >/dev/null 2>&1 || (echo "Run 'cargo install grcov' first." >&2 ; exit 1)
+	@cargo clean
 	@CARGO_INCREMENTAL=0 RUSTFLAGS="-Zprofile -Ccodegen-units=1 -Copt-level=0 -Clink-dead-code -Coverflow-checks=off -Zpanic_abort_tests -Cpanic=abort" cargo build
 	@CARGO_INCREMENTAL=0 RUSTFLAGS="-Zprofile -Ccodegen-units=1 -Copt-level=0 -Clink-dead-code -Coverflow-checks=off -Zpanic_abort_tests -Cpanic=abort" cargo test
-	@grcov $(TARGET) -t $(TARGET_HTML) --ignore "/*"
+	@grcov $(TARGET) -t html --ignore "/*" -s . --llvm --branch --ignore-not-existing -o $(TARGET_HTML)
 	@echo "Result saved to the '$(TARGET_HTML)' folder"
 
 test: ## Run dynamic tests
@@ -70,7 +69,7 @@ copyright: ## Add copyright information to each file
 	@find . -iname "*.rs" -exec bash -c "if ! grep -q Copyright "{}"; then cat COPYRIGHT {} > {}.new && mv {}.new {} ; fi" \;
 
 feedback: ## Provide feedback
-	@open https://github.com/alexanderwillner/md2src/issues
+	@open https://github.com/alexanderwillner/$(NAME)/issues
 
 install: ## Install the binary
 	@cargo install --path .
@@ -78,9 +77,9 @@ install: ## Install the binary
 release: test
 	@cargo build --release
 	@cargo publish
-	@cd target/release && tar -czf md2src-$(VERSION)-mac.tar.gz md2src
-	@shasum -a 256 target/release/md2src-$(VERSION)-mac.tar.gz
+	@cd target/release && tar -czf $(NAME)-$(VERSION)-mac.tar.gz $(NAME)
+	@shasum -a 256 target/release/$(NAME)-$(VERSION)-mac.tar.gz
 	@open .
 	@open ../homebrew-tap
-	@hub release create -a target/release/md2src-$(VERSION)-mac.tar.gz -m '$(VERSION)' v$(VERSION)
-	@open https://github.com/AlexanderWillner/md2src/releases/
+	@hub release create -a target/release/$(NAME)-$(VERSION)-mac.tar.gz -m '$(VERSION)' v$(VERSION)
+	@open https://github.com/AlexanderWillner/$(NAME)/releases/
