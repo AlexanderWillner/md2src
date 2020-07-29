@@ -22,7 +22,7 @@ fn main() {
 
 ```bash
 $ md2src --help
-md2src 1.0.2
+md2src 1.1.0
 Alexander Willner <alex@willner.ws>
 Markdown to source. Extracts code blocks marked with triple backticks into files.
 

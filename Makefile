@@ -75,6 +75,9 @@ install: ## Install the binary
 	@cargo install --path .
 
 release: test
+	@git status
+	@echo "Press enter to release $(NAME) v$(VERSION)..."	
+	@read
 	@cargo build --release
 	@cargo publish
 	@cd target/release && tar -czf $(NAME)-$(VERSION)-mac.tar.gz $(NAME)
