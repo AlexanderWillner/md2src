@@ -52,7 +52,7 @@ impl MD2Src {
                 active = false;
             }
             if let Event::Text(code) = element {
-                if active && ignore.iter().all(|s| !code.contains(s)) {
+                if active && ignore.iter().all(|s| s.is_empty() || !code.contains(s)) {
                     result.push(code.to_string());
                 }
             }
