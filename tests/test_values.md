@@ -1,24 +1,24 @@
 # Markdown Example for md2src
 
 ```
-Hello, world!
+Hello, text!
 ```
 
 ```rust
 fn main() {
-    println!("Hello, world!");
+    println!("Hello, Rust!");
 }
 ```
 
 ```rust
 fn main() {
-    println!("Hello, world! Again!");
+    println!("Hello, Rust! Again!");
 }
 ```
 
 ```bash
 #!/bin/bash
-STR="Hello World!"
+STR="Hello, Bash!"
 echo $STR
 ```
 
@@ -26,7 +26,16 @@ echo $STR
 #include <stdio.h>
 
 int main(void) {
-    printf("hello, world\n");
+    printf("Hello, C!\n");
+}
+```
+
+
+```c
+#include <stdio.h>
+
+int main(void) {
+    printf("Hello, C! Again!\n"); // ignore me
 }
 ```
 
@@ -34,7 +43,7 @@ int main(void) {
 #include <iostream>
 
 int main() {
-    std::cout << "Hello, world!\n";
+    std::cout << "Hello, C++!\n";
     return 0;
 }
 ```
@@ -44,29 +53,29 @@ using System;
 
 class Program {
     static void Main(string[] args) {
-        Console.WriteLine("Hello, world!");
+        Console.WriteLine("Hello, C#!");
     }
 }
 ```
 
 ```ocaml
-print_endline "Hello, world!";;
+print_endline "Hello, OCaml!";;
 ```
 
 ```closure
-(println "Hello world!")
+(println "Hello, Closure!")
 ```
 
 ```cobol
 IDENTIFICATION DIVISION.
 PROGRAM-ID. hello-world.
 PROCEDURE DIVISION.
-    DISPLAY "Hello, world!"
+    DISPLAY "Hello, Cobol!"
 ```
 
 ```dart
 main() {
-  print('Hello World!');
+  print('Hello, Dart!');
 }
 ```
 
@@ -74,12 +83,12 @@ main() {
 -module(hello).
 -export([hello_world/0]).
 
-hello_world() -> io:fwrite("hello, world\n").
+hello_world() -> io:fwrite("Hello, Erlang!\n").
 ```
 
 ```fortran
 program helloworld
-     print *, "Hello world!"
+     print *, "Hello Fortran!"
 end program helloworld
 ```
 
@@ -89,28 +98,28 @@ package main
 import "fmt"
 
 func main() {
-    fmt.Println("Hello, World")
+    fmt.Println("Hello, Go!")
 }
 ```
 
 ```ruby
-println "Hello World"
+println "Hello, Ruby!"
 ```
 
 ```java
 class HelloWorldApp {
     public static void main(String[] args) {
-        System.out.println("Hello World!"); // Prints the string to the console.
+        System.out.println("Hello, Java!");
     }
 }
 ```
 
 ```javascript
-console.log("Hello World!");
+console.log("Hello, JavaScript!");
 ```
 
 ```lisp
-(print "Hello world")
+(print "Hello, Lisp!")
 ```
 
 ```lua
@@ -120,33 +129,33 @@ print("Hello World!")
 ```pascal
 program HelloWorld(output);
 begin
-  Write('Hello, world!')
+  Write('Hello, Pascal!')
 end.
 ```
 
 ```perl
-print "Hello, World!\n";
+print "Hello, Perl!\n";
 ```
 
 ```php
-<?php echo "Hello, World";
+<?php echo "Hello, PHP!\n";
 ```
 
 ```python
-print("Hello World")
+print("Hello, Python!")
 ```
 
 ```ruby
-puts 'Hello World!'
+puts 'Hello, Ruby!'
 ```
 
 ```scala
 object HelloWorld extends App {
-   println("Hello, World!")
+   println("Hello, Scala!")
 }
 ```
 
 ```swift
-println("Hello, world!")
+println("Hello, Swift!")
 ```
 

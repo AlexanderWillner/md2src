@@ -29,7 +29,7 @@ mod test {
     fn test_main() {
         let args = ["", "", ""].iter().map(|s| s.to_string());
         assert!(cli_entry(args).is_err());
-        let args = ["", "examples/hello.md", "."].iter().map(|s| s.to_string());
+        let args = ["", "tests/test_values.md", "."].iter().map(|s| s.to_string());
         assert!(cli_entry(args).is_ok());
     }
 }
