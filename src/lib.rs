@@ -35,7 +35,7 @@ impl MD2Src {
         self: &Self,
         markdown: String,
         lang: String,
-        ignore: String,
+        ignore: Vec<String>,
     ) -> Result<Vec<String>, ExitFailure> {
         let parser = Parser::new_ext(&markdown, Options::empty());
         let mut active = false;
@@ -52,7 +52,7 @@ impl MD2Src {
                 active = false;
             }
             if let Event::Text(code) = element {
-                if active && !code.contains(&ignore) {
+                if active && ignore.iter().all(|s| !code.contains(s)) {
                     result.push(code.to_string());
                 }
             }
@@ -73,7 +73,7 @@ impl MD2Src {
         self: &Self,
         file: String,
         lang: String,
-        ignore: String,
+        ignore: Vec<String>,
     ) -> Result<Vec<String>, ExitFailure> {
         self.get_snippets_from_string(fs::read_to_string(&file)?, lang, ignore)
     }
